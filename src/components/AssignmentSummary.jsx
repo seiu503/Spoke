@@ -9,6 +9,7 @@ import Badge from 'material-ui/Badge'
 import moment from 'moment'
 import Divider from 'material-ui/Divider'
 import { withRouter } from 'react-router'
+import bestTextColor from '../lib/color-contrast'
 
 const inlineStyles = {
   badge: {
@@ -91,6 +92,15 @@ export class AssignmentSummary extends Component {
     const { title, description, dueBy,
             primaryColor, logoImageUrl, introHtml,
             useDynamicAssignment } = assignment.campaign
+    let pColor
+    let headerColor
+    if (primaryColor) {
+      pColor = primaryColor.substr(1)
+      headerColor = bestTextColor(pColor)
+    } else {
+      headerColor = 'rgb(54, 67, 80)'
+    }
+    console.log(headerColor)
 
     return (
       <div className={css(styles.container)}>
@@ -99,6 +109,8 @@ export class AssignmentSummary extends Component {
         >
           <CardTitle
             title={title}
+            titleColor={headerColor}
+            subtitleColor={headerColor}
             subtitle={`${description} - ${moment(dueBy).format('MMM D YYYY')}`}
             style={{ backgroundColor: primaryColor }}
             children={logoImageUrl ? <img src={logoImageUrl} className={css(styles.image)} /> : ''}
