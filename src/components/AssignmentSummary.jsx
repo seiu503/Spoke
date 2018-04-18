@@ -100,7 +100,6 @@ export class AssignmentSummary extends Component {
     } else {
       headerColor = 'rgb(54, 67, 80)'
     }
-    console.log(headerColor)
 
     return (
       <div className={css(styles.container)}>

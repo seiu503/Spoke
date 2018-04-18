@@ -39,11 +39,11 @@ const isContrastHighEnough = (hex1, hex2) => {
 }
 
 // given a background color (hex value)
-// determine whether black or white text gives higher contrast
-// and return either '000000' or 'ffffff'
+// determine whether dark gray or white text gives higher contrast
+// and return either '#364350' or '#ffffff'
 const bestTextColor = (backgroundColor) => {
   if (isContrastHighEnough(backgroundColor, '000000')) {
-    return '#000000'
+    return '#364350'
   } else if (isContrastHighEnough(backgroundColor, 'ffffff')) {
     return '#ffffff'
   }
