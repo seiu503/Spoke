@@ -166,6 +166,11 @@ const inlineStyles = {
   actionToolbarFirst: {
     backgroundColor: 'white'
   },
+  actionToolbarGroupMobile: {
+    backgroundColor: 'white',
+    minHeight: '72px',
+    height: '72px'
+  },
 
   snackbar: {
     zIndex: 1000001
@@ -598,8 +603,12 @@ export class AssignmentTexterContact extends React.Component {
     if (messageStatus === 'needsMessage' || justSentNew) {
       return (
         <div>
-          <Toolbar style={inlineStyles.actionToolbarFirst}>
+          <Toolbar
+            style={size <= 450 ? inlineStyles.actionToolbarGroupMobile
+            : inlineStyles.actionToolbarFirst}
+          >
             <ToolbarGroup
+              style={size <= 450 ? inlineStyles.actionToolbarGroupMobile : {}}
               firstChild
             >
               <SendButton
